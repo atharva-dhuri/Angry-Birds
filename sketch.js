@@ -55,7 +55,7 @@ function draw(){
     fill("white");
     text("Score: " + score, 900, 100);
 
-    pig1.score();
+    
     pig3.score();
 
     Engine.update(engine);
