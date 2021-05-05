@@ -22,6 +22,7 @@ function setup(){
     engine = Engine.create();
     world = engine.world;
 
+    //creating objects
     ground = new Ground(600,height,1200,20);
     platform = new Ground(150, 305, 300, 170);
 
@@ -55,11 +56,11 @@ function draw(){
     fill("white");
     text("Score: " + score, 900, 100);
 
-    
+    pig1.score();
     pig3.score();
 
     Engine.update(engine);
-    //strokeWeight(4);
+    //displaying all the objects
     box1.display();
     box2.display();
     ground.display();
@@ -90,14 +91,17 @@ function mouseDragged(){
 
 function mouseReleased(){
     slingshot.fly();
-    gamestate = "launch";
+    gamestate = "launch"; 
 }
 
-/*function keyPressed(){
+function keyPressed(){
     if(keyCode === 32){
         slingshot.attach(bird.body);
+        Matter.Body.setPosition(bird.body, {x:200, y: 50});
+        bird.trajectory = []
+        gamestate = "start";
     }
-}*/
+}
 
 async function getTime() {
     var response = await fetch("https://worldtimeapi.org/api/timezone/Asia/Tokyo");
