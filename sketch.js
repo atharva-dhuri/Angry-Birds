@@ -14,7 +14,7 @@ var gamestate = "Start";
 
 
 function preload() {
-    getTime();
+    backgroundImg = loadImage("sprites/bg.png");
 }
 
 function setup(){
@@ -103,20 +103,3 @@ function keyPressed(){
     }
 }
 
-async function getTime() {
-    var response = await fetch("https://worldtimeapi.org/api/timezone/Asia/Tokyo");
-    var responsetype = await response.json();
-    console.log(responsetype);
-    var datetime = responsetype.datetime;
-    console.log(datetime);
-    var hr = datetime.slice(11, 13);
-    console.log(hr);
-
-    if(hr>=6 && hr<=18) {
-        bg = "sprites/bg.png";
-    }
-    else{
-        bg = "sprites/bg2.jpg";
-    }
-    backgroundImg = loadImage(bg);
-}
